@@ -21,5 +21,5 @@ This app will run as a Node CLI to gather information about each employee.
 ## Screenshots:
 
 **Template Engine - Employee Summary**
-!["Start Page"](Screenshots/mainPage.png "Start page.")
+!["Start Page"](images/TeamG.png "Start page.")
 
