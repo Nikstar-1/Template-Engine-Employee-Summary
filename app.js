@@ -75,7 +75,7 @@ function createThisManagersTeam() {
       },
     ])
     .then((employeeType) => {
-      if (employeeType === "Engineer") {
+      if (employeeType.typeMember === "Engineer") {
         inquirer //Add Engineer
           .prompt([
             {
@@ -98,8 +98,12 @@ function createThisManagersTeam() {
               type: "input",
               message: "What is your engineer's github?",
             },
-          ]);
-      } else if (employeeType === "Intern") {
+          ]).then(answers => {
+              const newEngineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+              teamMembers.push(newEngineer); 
+              createThisManagersTeam();
+          });
+      } else if (employeeType.typeMember === "Intern") {
         inquirer.prompt([
           //Create a Intern
           {
@@ -123,7 +127,7 @@ function createThisManagersTeam() {
             message: "What is your intern's school?",
           },
         ]);
-      } else if (employeeType === "I don't want to add any more team members") {
+      } else if (employeeType.typeMember === "I don't want to add any more team members") {
       }
     });
 }
