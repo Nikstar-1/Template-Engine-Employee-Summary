@@ -126,9 +126,21 @@ function createThisManagersTeam() {
             name: "school",
             message: "What is your intern's school?",
           },
-        ]);
+        ]).then(answers => {
+            const newIntern = new Intern(answers.name, answers.id, answers.email, answers.school);
+            teamMembers.push(newIntern); 
+            createThisManagersTeam();
+        });
       } else if (employeeType.typeMember === "I don't want to add any more team members") {
+          console.log(teamMembers)
+          createHTML();
       }
     });
 }
+
+function createHTML() {
+    fs.writeFileSync(outputPath, render(teamMembers))
+}
+
+
 startCreatingTeam();
